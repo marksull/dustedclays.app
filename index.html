@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DustedClays — Hands-free clay target scoring on Apple Watch</title>
+<meta name="description" content="DustedClays scores your clay target shooting automatically. The Apple Watch detects every shot from recoil — Trap, Skeet, Sporting and your own custom disciplines — and your rounds sync to iPhone.">
+<link rel="canonical" href="https://dustedclays.app/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:title" content="DustedClays — Hands-free clay target scoring">
+<meta property="og:description" content="Your Apple Watch detects every shot from recoil and scores the round for you. Review everything on iPhone.">
+<meta property="og:image" content="https://dustedclays.app/assets/icon-512.png">
+<meta property="og:url" content="https://dustedclays.app/">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #0c1220;
+    --bg-raise: #151f33;
+    --bg-card: #121a2b;
+    --line: #23304a;
+    --text: #e8ecf4;
+    --muted: #93a0b8;
+    --orange: #f97316;
+    --orange-soft: #fb923c;
+    --cream: #fde8d7;
+    --radius: 16px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--orange-soft); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 72px 0 56px;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% -10%, #22314e 0%, transparent 60%),
+      var(--bg);
+  }
+  .hero img.appicon {
+    width: 128px; height: 128px;
+    border-radius: 28px;
+    box-shadow: 0 12px 48px rgba(249, 115, 22, 0.25), 0 4px 16px rgba(0,0,0,0.5);
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-top: 24px;
+  }
+  .hero h1 .dusted { color: var(--orange-soft); }
+  .hero p.tag {
+    font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+    color: var(--cream);
+    margin-top: 12px;
+    font-weight: 500;
+  }
+  .hero p.sub {
+    color: var(--muted);
+    max-width: 620px;
+    margin: 16px auto 0;
+  }
+  .platforms {
+    display: inline-flex;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 10px 18px;
+    background: var(--bg-raise);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  /* App Store badge placeholder — swap in the official badge when live:
+  <a class="store" href="APP_STORE_URL">Download on the App Store</a>
+  */
+
+  section { padding: 64px 0; }
+  section h2 {
+    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+    font-weight: 750;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  section h2 + p.lead {
+    text-align: center;
+    color: var(--muted);
+    max-width: 640px;
+    margin: 12px auto 0;
+  }
+
+  /* How it works */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 44px;
+  }
+  .step {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 22px;
+    text-align: center;
+  }
+  .step .num {
+    display: inline-grid;
+    place-items: center;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--orange-soft), #c2410c);
+    color: #fff;
+    font-weight: 800;
+  }
+  .step h3 { margin-top: 12px; font-size: 1.15rem; }
+  .step p { color: var(--muted); font-size: 0.95rem; margin-top: 6px; }
+  .step .shot { margin-top: 18px; }
+
+  /* device frames */
+  .watchframe {
+    display: inline-block;
+    padding: 10px;
+    background: #000;
+    border-radius: 56px;
+    border: 1px solid #2a3550;
+    box-shadow: 0 10px 34px rgba(0,0,0,0.55);
+  }
+  .watchframe img {
+    display: block;
+    width: 208px;
+    border-radius: 46px;
+  }
+  .phoneframe {
+    display: inline-block;
+    padding: 10px;
+    background: #000;
+    border-radius: 44px;
+    border: 1px solid #2a3550;
+    box-shadow: 0 10px 34px rgba(0,0,0,0.55);
+  }
+  .phoneframe img {
+    display: block;
+    width: 232px;
+    border-radius: 34px;
+  }
+
+  /* Features */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 44px;
+  }
+  .feature {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .feature .glyph { font-size: 1.5rem; }
+  .feature h3 { font-size: 1.05rem; margin-top: 10px; color: var(--cream); }
+  .feature p { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
+
+  /* Gallery */
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 26px;
+    margin-top: 44px;
+  }
+  .gallery figure { text-align: center; }
+  .gallery figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 10px; }
+
+  /* Privacy */
+  .privacy-box {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--orange);
+    border-radius: var(--radius);
+    padding: 28px;
+    max-width: 760px;
+    margin: 36px auto 0;
+  }
+  .privacy-box h3 { color: var(--cream); }
+  .privacy-box p { color: var(--muted); margin-top: 10px; font-size: 0.97rem; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 0 48px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  footer .foot-logo { width: 72px; opacity: 0.9; }
+  footer p { margin-top: 10px; }
+
+  @media (max-width: 840px) {
+    .steps, .features { grid-template-columns: 1fr; }
+    .step { max-width: 460px; margin: 0 auto; width: 100%; }
+    section { padding: 48px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="appicon" src="assets/icon-512.png" alt="DustedClays app icon — a broken clay target" width="128" height="128">
+    <h1><span class="dusted">Dusted</span>Clays</h1>
+    <p class="tag">Hands-free clay target scoring on your Apple&nbsp;Watch.</p>
+    <p class="sub">Mount, call, shoot. DustedClays feels the recoil through your watch and scores every clay automatically — no buttons between shots, no soggy scorecards, no lost tallies.</p>
+    <div class="platforms">⌚ Apple Watch &nbsp;+&nbsp; 📱 iPhone</div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="lead">Three steps from gun case to scorecard.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="num">1</span>
+        <h3>Pick your discipline</h3>
+        <p>Open the watch app and choose Trap, Skeet, Sporting, or any discipline you've built yourself. Tap Start — that's the last time you touch the screen.</p>
+        <div class="shot watchframe"><img src="assets/watch-list.png" alt="Watch screen listing Trap, Trap Single Barrel and Skeet disciplines" loading="lazy"></div>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <h3>Just shoot</h3>
+        <p>The motion sensors detect each shot from recoil and score it a hit. Missed one? A single glance-free tap fixes it — with separate buttons for each bird of a pair.</p>
+        <div class="shot watchframe"><img src="assets/watch-round.png" alt="Watch screen mid-round showing 4 of 5 hits and first/second miss buttons for a pair" loading="lazy"></div>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <h3>Review on iPhone</h3>
+        <p>Rounds sync to your iPhone automatically — every station, every clay, every second barrel. Watch your averages climb over the season.</p>
+        <div class="shot phoneframe"><img src="assets/phone-history.png" alt="iPhone screen showing a history of scored rounds across disciplines" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="background: var(--bg-raise);">
+  <div class="wrap">
+    <h2>Built for the range</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="glyph">💥</div>
+        <h3>Automatic shot detection</h3>
+        <p>Recoil is unmistakable to a wrist-worn motion sensor. Every shot registers the instant you take it — even with the screen down and your eyes on the trap.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🔁</div>
+        <h3>Double-barrel &amp; true pairs</h3>
+        <p>A fast follow-up shot counts as your second barrel on the same clay. In Sporting, pairs score one shot per bird — with a split Miss button for each.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🛠️</div>
+        <h3>Your disciplines, your rules</h3>
+        <p>Build custom disciplines on the iPhone — stations, target sequence, shots per clay — and they appear on the watch automatically.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🎚️</div>
+        <h3>Field calibration</h3>
+        <p>A live G-force readout lets you tune detection to your gun, load and mount in a couple of shots. Set it once, forget it.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">⏱️</div>
+        <h3>Runs the whole round</h3>
+        <p>The watch keeps sensing between stations and while your wrist is down on the gun — a full round tracks start to finish without waking the screen.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🔒</div>
+        <h3>Private by design</h3>
+        <p>Your scores live on your devices. No account, no analytics, no cloud — nothing leaves your watch and phone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="screens">
+  <div class="wrap">
+    <h2>Every clay accounted for</h2>
+    <div class="gallery">
+      <figure>
+        <div class="watchframe"><img src="assets/watch-summary.png" alt="Watch round summary showing 22 of 25, 88 percent" loading="lazy"></div>
+        <figcaption>Round summary on the watch</figcaption>
+      </figure>
+      <figure>
+        <div class="phoneframe"><img src="assets/phone-detail.png" alt="iPhone station-by-station scorecard with hit, miss and second-barrel markers" loading="lazy"></div>
+        <figcaption>Station-by-station scorecard</figcaption>
+      </figure>
+      <figure>
+        <div class="phoneframe"><img src="assets/phone-stats.png" alt="iPhone stats screen with best score and score trend chart" loading="lazy"></div>
+        <figcaption>Trends across the season</figcaption>
+      </figure>
+      <figure>
+        <div class="phoneframe"><img src="assets/phone-disciplines.png" alt="iPhone discipline editor listing Trap, Trap Single Barrel, Skeet and Sporting" loading="lazy"></div>
+        <figcaption>Discipline editor</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="privacy" style="background: var(--bg-raise);">
+  <div class="wrap">
+    <h2>Privacy</h2>
+    <div class="privacy-box">
+      <h3>DustedClays collects no data. Full stop.</h3>
+      <p>All scores and settings are stored locally on your iPhone and Apple Watch and sync only between your own devices. The app has no accounts, no analytics, no advertising and no third-party SDKs, and it never transmits anything to us or anyone else. Motion-sensor data is processed on the watch in real time to detect shots and is never recorded or stored.</p>
+      <p>This page is the app's privacy policy. If it ever changes, the change will be visible right here.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img class="foot-logo" src="assets/logo.png" alt="">
+    <p>DustedClays — clay target scoring for Apple Watch &amp; iPhone.</p>
+    <p>© 2026 Mark Sullivan · <a href="#privacy">Privacy</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
