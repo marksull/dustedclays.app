@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DustedClays — Help &amp; user guide</title>
+<meta name="description" content="How DustedClays works, screen by screen: scoring rounds on the Apple Watch, reviewing scorecards and stats on iPhone, building custom disciplines and calibrating shot detection.">
+<link rel="canonical" href="https://dustedclays.app/help.html">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:title" content="DustedClays — Help &amp; user guide">
+<meta property="og:description" content="Every DustedClays screen explained — automatic recoil scoring on the watch, scorecards and stats on iPhone.">
+<meta property="og:image" content="https://dustedclays.app/assets/icon-512.png">
+<meta property="og:url" content="https://dustedclays.app/help.html">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* Design tokens and shared rules duplicated from index.html — keep in sync. */
+  :root {
+    --bg: #FBFAF7;
+    --ink: #17150F;
+    --muted: #66604F;
+    --faint: #8A8168;
+    --line: #D9D3C4;
+    --orange: #E8632C;
+    --orange-soft: #F0824E;
+    --orange-tint: #FBEADF;
+    --sand: #F1EDE2;
+    --sand-deep: #E9E2D0;
+    --dark: #17150F;
+    --dark-muted: #A8A290;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --hit: #4CA654;
+    --second: #D9A410;
+    --miss: #D64533;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { opacity: 0.85; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+  .btn {
+    display: inline-block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 999px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--orange); color: #fff; }
+
+  /* Header */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 0;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; }
+  .brand-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--orange); flex: none; }
+  .site-nav { display: flex; align-items: center; gap: 34px; font-size: 0.95rem; color: var(--muted); }
+  .site-nav .btn { font-size: 0.95rem; padding: 11px 22px; background: var(--ink); color: var(--bg); }
+
+  /* Hero */
+  .hero { text-align: center; padding: 76px 0 0; }
+  .hero .pill {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--orange);
+    background: var(--orange-tint);
+    border-radius: 999px;
+    padding: 8px 18px;
+    margin-bottom: 30px;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    max-width: 900px;
+    margin: 0 auto 24px;
+    text-wrap: balance;
+  }
+  .hero p.sub {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 620px;
+    margin: 0 auto 0;
+    text-wrap: pretty;
+  }
+
+  /* Sections */
+  section { padding: 88px 0; }
+  section h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-align: center;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+  section h2 + p.lead { text-align: center; color: var(--muted); font-size: 1.1rem; max-width: 640px; margin: 12px auto 0; }
+
+  /* Device frames */
+  .watchframe { display: inline-block; padding: 9px; background: #000; border-radius: 48px; box-shadow: 0 10px 30px rgba(23, 21, 15, 0.18); }
+  .watchframe img { display: block; width: 176px; border-radius: 40px; }
+  .phoneframe { display: inline-block; padding: 9px; background: #000; border-radius: 40px; box-shadow: 0 10px 30px rgba(23, 21, 15, 0.18); }
+  .phoneframe img { display: block; width: 196px; border-radius: 32px; }
+
+  /* Scoring primer */
+  .primer {
+    text-align: left;
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px 44px;
+    box-shadow: 0 1px 3px rgba(23, 21, 15, 0.06);
+    max-width: 860px;
+    margin: 56px auto 0;
+  }
+  .primer h2 { text-align: left; font-size: 1.4rem; letter-spacing: -0.01em; }
+  .primer p { color: var(--muted); font-size: 0.98rem; margin-top: 12px; }
+  .primer p strong { color: var(--ink); }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--sand); }
+  .legend span { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--muted); }
+  .cdot { width: 14px; height: 14px; border-radius: 50%; flex: none; }
+  .cdot.hit { background: var(--hit); }
+  .cdot.second { background: var(--second); }
+  .cdot.miss { background: var(--miss); }
+
+  /* Screen documentation rows */
+  .doc-rows { margin-top: 56px; max-width: 1080px; margin-left: auto; margin-right: auto; }
+  .doc-row {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 56px;
+    align-items: center;
+    padding: 52px 0;
+    border-top: 1px solid var(--line);
+  }
+  .doc-rows .doc-row:first-child { border-top: none; padding-top: 0; }
+  .doc-row.flip .doc-media { order: 2; }
+  .doc-media { text-align: center; }
+  .doc-copy h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .doc-copy > p { color: var(--muted); font-size: 0.98rem; margin-bottom: 20px; }
+  .doc-fields dt { font-weight: 700; font-size: 0.94rem; }
+  .doc-fields dd { color: var(--muted); font-size: 0.94rem; margin: 2px 0 14px; }
+  .doc-fields dd:last-child { margin-bottom: 0; }
+  .ui {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 0.85em;
+    background: rgba(23, 21, 15, 0.06);
+    border-radius: 6px;
+    padding: 1px 7px;
+    white-space: nowrap;
+  }
+  #iphone .ui { background: rgba(23, 21, 15, 0.08); }
+  .cdot.inline { display: inline-block; width: 11px; height: 11px; vertical-align: -1px; margin-right: 2px; }
+
+  /* iPhone section tint */
+  #iphone { background: var(--sand); }
+  #iphone .doc-row { border-top-color: var(--sand-deep); }
+  #iphone .ui { background: rgba(23, 21, 15, 0.07); }
+
+  /* Footer */
+  .site-footer { background: var(--dark); color: var(--bg); padding: 76px 0 40px; text-align: center; }
+  .site-footer h2 { font-size: clamp(1.6rem, 3.4vw, 2.1rem); font-weight: 700; letter-spacing: -0.02em; }
+  .site-footer p.policy { color: var(--dark-muted); max-width: 640px; margin: 16px auto 36px; font-size: 0.98rem; line-height: 1.7; }
+  .site-footer p.policy a { text-decoration: underline; text-underline-offset: 3px; }
+  .site-footer .foot-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    justify-content: space-between;
+    border-top: 1px solid #333026;
+    margin-top: 64px;
+    padding-top: 24px;
+    font-size: 0.82rem;
+    color: #7A745F;
+  }
+
+  @media (max-width: 900px) {
+    section { padding: 60px 0; }
+    .site-nav a:not(.btn) { display: none; }
+    .primer { padding: 30px 26px; }
+    .doc-row { grid-template-columns: 1fr; gap: 32px; padding: 44px 0; }
+    .doc-row.flip .doc-media { order: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-dot"></span>Dusted Clays</a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="#watch">On the watch</a>
+      <a href="#iphone">On the iPhone</a>
+      <a class="btn" href="index.html#beta">Join the beta</a>
+    </nav>
+  </header>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="pill">User guide</span>
+    <h1>How DustedClays works</h1>
+    <p class="sub">Every screen on the watch and the iPhone, and what each field means.</p>
+
+    <div class="primer" id="scoring">
+      <h2>How scoring works</h2>
+      <p><strong>Every shot the watch feels is scored as a hit.</strong> The motion sensors detect shotgun recoil, so you never tell the app that you fired — you only correct it when you miss, with one tap.</p>
+      <p><strong>Second barrel:</strong> in disciplines that allow 2 shots per single target, a quick follow-up shot inside the double-barrel window counts as your second barrel on the <em>same</em> clay. A clay taken with the second barrel still scores as a hit — it's just shown in yellow.</p>
+      <p><strong>Pairs:</strong> a pair is two clays released together, one shot per bird. Each bird is scored on its own, with a separate Miss button for each.</p>
+      <div class="legend">
+        <span><i class="cdot hit"></i>Hit, first barrel</span>
+        <span><i class="cdot second"></i>Hit, second barrel</span>
+        <span><i class="cdot miss"></i>Miss</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="watch">
+  <div class="wrap">
+    <h2>On the Apple Watch</h2>
+    <p class="lead">The watch runs the whole round — from picking a discipline to saving the scorecard.</p>
+
+    <div class="doc-rows">
+
+      <div class="doc-row">
+        <div class="doc-media">
+          <div class="watchframe"><img src="assets/watch-list.png" alt="Watch screen listing Trap, Trap Single Barrel and Skeet disciplines" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>Discipline list</h3>
+          <p>The first screen every time the app opens. Tap a discipline to head to its start screen.</p>
+          <dl class="doc-fields">
+            <dt>Discipline rows</dt>
+            <dd>Each row shows the discipline's icon, name, and its shape in shorthand: <span class="ui">25 clays · 5 st · 2 shots</span> means 25 targets per round across 5 stations, with up to 2 shots allowed per single. Disciplines with pairs show the mix instead, like <span class="ui">3S + 1P</span> — three singles and one pair per station.</dd>
+            <dt>Where they come from</dt>
+            <dd>Disciplines are created and edited in the iPhone app and sync to the watch automatically — the list is read-only here.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="doc-row flip">
+        <div class="doc-media">
+          <div class="watchframe"><img src="assets/watch-landing.png" alt="Watch start screen for Sporting showing the round summary, starting station and a large green Start button" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>Start screen</h3>
+          <p>One last stop before shooting. Pressing <span class="ui">Start</span> is the last time you need to touch the screen.</p>
+          <dl class="doc-fields">
+            <dt>Top block</dt>
+            <dd>The discipline's name, its round shape (<span class="ui">3S + 1P · 25 clays · 5 st</span>), and <span class="ui">Start St. 1</span> — the station you'll begin on. Tap anywhere in this block to change the starting station.</dd>
+            <dt>‹ Disciplines</dt>
+            <dd>Back to the discipline list.</dd>
+            <dt>Start</dt>
+            <dd>Begins the round: shot detection turns on and the scoring screen appears.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-media">
+          <div class="watchframe"><img src="assets/watch-stations.png" alt="Watch starting station picker with a Station 1 wheel and Set and Cancel buttons" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>Starting station</h3>
+          <p>If your squad starts you on a different peg, tell the app where you begin — station numbers on the scorecard will match the ground.</p>
+          <dl class="doc-fields">
+            <dt>Station wheel</dt>
+            <dd>Pick any station the discipline defines (Station 1 up to the discipline's station count).</dd>
+            <dt>Set / Cancel</dt>
+            <dd><span class="ui">Set</span> saves the choice — the app remembers it per discipline for next time. <span class="ui">Cancel</span> leaves it unchanged.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="doc-row flip">
+        <div class="doc-media">
+          <div class="watchframe"><img src="assets/watch-round.png" alt="Watch mid-round scoring screen showing 4 of 5 hits, station and pair progress, Prev and Next buttons and split 1st and 2nd miss buttons" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>During the round</h3>
+          <p>This screen runs the whole round hands-free. Every detected shot scores the next clay as a hit — you only touch it to flag a miss. When you lower your wrist it dims to just the score, and detection keeps running.</p>
+          <dl class="doc-fields">
+            <dt>Score counter</dt>
+            <dd>Hits over shots taken so far — <span class="ui">4/5</span> means 4 hit out of 5 clays shot at.</dd>
+            <dt>Progress line</dt>
+            <dd><span class="ui">St. 1 · Tgt 3 of 5</span> — the station you're on and which target of that station is next. Pairs read <span class="ui">Pair 4 of 4</span>.</dd>
+            <dt>Dot row</dt>
+            <dd>Your last few clays: <i class="cdot inline hit"></i>green = hit, <i class="cdot inline second"></i>yellow = second-barrel hit, <i class="cdot inline miss"></i>red = miss. The gray dot is the clay that's up next.</dd>
+            <dt>Miss</dt>
+            <dd>Flags your most recent shot as a miss. For a pair you get two buttons — <span class="ui">1st</span> and <span class="ui">2nd</span> — one per bird; tap again to flip a clay back to a hit.</dd>
+            <dt>Prev / Next</dt>
+            <dd><span class="ui">Prev</span> undoes the last clay and steps back — use it if a slammed door scored a phantom shot. <span class="ui">Next</span> skips ahead (say, a no-bird you never shot at); on the final target it reads <span class="ui">End</span> and finishes the round.</dd>
+            <dt>✕ (top left)</dt>
+            <dd>Abandons the round after a confirmation — the score is discarded, nothing is saved.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-media">
+          <div class="watchframe"><img src="assets/watch-summary.png" alt="Watch round summary showing 22 of 25 and 88 percent for a Sporting round" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>Round summary</h3>
+          <p>Shown the moment the last clay is scored.</p>
+          <dl class="doc-fields">
+            <dt>Headline score</dt>
+            <dd>Hits, total clays, and your percentage — green at 90% or better, yellow from 70–89%, red below that.</dd>
+            <dt>Stations</dt>
+            <dd>One row per station with a dot for every clay (same colors as during the round) and that station's <span class="ui">hits/clays</span>.</dd>
+            <dt>Save &amp; Done</dt>
+            <dd>Sends the scorecard to your iPhone and closes the round. If the phone isn't reachable, the watch queues it and delivers it later.</dd>
+            <dt>New Round</dt>
+            <dd>Discards this summary view and returns to the start screen for another round.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="doc-row flip">
+        <div class="doc-media">
+          <div class="watchframe"><img src="assets/watch-settings.png" alt="Watch settings showing a G-Force slider set to 2.5 G and a Calibration link" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>Settings</h3>
+          <p>Shot detection is tuned here on the watch — the wrist wearing the sensor is the source of truth. Open it from the bottom of the discipline list.</p>
+          <dl class="doc-fields">
+            <dt>G-Force</dt>
+            <dd>The recoil threshold: how hard a jolt must be to count as a shot, from 1.0 to 8.0 G. The default of <span class="ui">2.5 G</span> suits most guns — 2–4 G is typical shotgun recoil. Raise it if bumps score phantom shots; lower it if real shots go undetected.</dd>
+            <dt>Calibration</dt>
+            <dd>Opens the live calibration screen below — the easy way to set the threshold for your gun and load.</dd>
+            <dt>Window</dt>
+            <dd>The double-barrel window, 0.2–2.0 seconds (default <span class="ui">1.5 s</span>): two shots closer together than this count as one clay — first and second barrel. Only applies where the discipline allows 2 shots per single.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-media">
+          <div class="watchframe"><img src="assets/watch-calibration.png" alt="Watch calibration screen showing a live G-force readout of 0.00, a 2 second peak and a running session" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>Calibration</h3>
+          <p>Measures your actual recoil at the range so the threshold fits your gun, load and mount. At rest it reads zero — the numbers move the moment you shoot. Every detection plays a haptic so you know it registered.</p>
+          <dl class="doc-fields">
+            <dt>G now</dt>
+            <dd>The live, gravity-removed G-force at your wrist, updating in real time.</dd>
+            <dt>2 s peak</dt>
+            <dd>The strongest jolt in the last two seconds — after a shot, this is your recoil reading.</dd>
+            <dt>Threshold</dt>
+            <dd>The same G-Force setting as on the Settings screen, adjustable here while you watch live readings.</dd>
+            <dt>Set from last peak</dt>
+            <dd>One-tap tuning: fire a few shots, then tap this to set the threshold to about 75% of your measured peak — firm enough to ignore knocks, loose enough to never miss a shot.</dd>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="iphone">
+  <div class="wrap">
+    <h2>On the iPhone</h2>
+    <p class="lead">The phone is your record book: every round synced from the watch, plus the discipline editor.</p>
+
+    <div class="doc-rows">
+
+      <div class="doc-row">
+        <div class="doc-media">
+          <div class="phoneframe"><img src="assets/phone-history.png" alt="iPhone history screen listing scored rounds grouped by date" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>History</h3>
+          <p>Every round you've saved, newest first, grouped by day. Rounds arrive here automatically after you tap Save &amp; Done on the watch.</p>
+          <dl class="doc-fields">
+            <dt>Round rows</dt>
+            <dd>The discipline's icon and name, the time you shot it, the score as <span class="ui">22/25</span>, and your hit percentage.</dd>
+            <dt>Managing rounds</dt>
+            <dd>Tap a row for the full scorecard; swipe a row left to delete it.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="doc-row flip">
+        <div class="doc-media">
+          <div class="phoneframe"><img src="assets/phone-detail.png" alt="iPhone scorecard showing hit, miss and second-barrel markers for each station" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>Scorecard</h3>
+          <p>The full story of one round, station by station, clay by clay.</p>
+          <dl class="doc-fields">
+            <dt>Summary</dt>
+            <dd><span class="ui">Score</span> (hits / shots), <span class="ui">Hit %</span> to one decimal, the discipline, and the date.</dd>
+            <dt>Station rows</dt>
+            <dd>One row per station under <span class="ui">Station / Clays / Score</span> headers, with an icon per clay: <i class="cdot inline hit"></i>green check = hit, <i class="cdot inline second"></i>yellow check = hit that took the second barrel, <i class="cdot inline miss"></i>red ✕ = miss. The station's own <span class="ui">hits/clays</span> sits at the right, and a <span class="ui">Total</span> row closes the card.</dd>
+            <dt>Share</dt>
+            <dd>The share button in the top corner exports the scorecard as plain text — filled dots for hits, hollow for misses — ready for the group chat.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-media">
+          <div class="phoneframe"><img src="assets/phone-stats.png" alt="iPhone stats screen with rounds, best score and average hit rate plus a score trend chart" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>Stats</h3>
+          <p>Your season at a glance, one discipline at a time.</p>
+          <dl class="doc-fields">
+            <dt>Discipline</dt>
+            <dd>Every number on this screen is filtered to the discipline picked here.</dd>
+            <dt>Rounds</dt>
+            <dd>How many rounds of that discipline you've recorded.</dd>
+            <dt>Best Score</dt>
+            <dd>Your highest-percentage round, shown as <span class="ui">23/25</span>.</dd>
+            <dt>Avg Hit %</dt>
+            <dd>Your average hit rate across all recorded rounds of the discipline.</dd>
+            <dt>Score Trend</dt>
+            <dd>Hit percentage per round in shooting order, on a fixed 0–100% scale. It appears once you have at least two rounds recorded.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="doc-row flip">
+        <div class="doc-media">
+          <div class="phoneframe"><img src="assets/phone-settings.png" alt="iPhone settings screen with a Disciplines entry and a note that shot detection is tuned on the watch" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>Settings</h3>
+          <p>Mostly a doorway: the disciplines you shoot are managed from here.</p>
+          <dl class="doc-fields">
+            <dt>Disciplines</dt>
+            <dd>Opens the discipline list below — everything about what you shoot and how it's scored lives in there.</dd>
+            <dt>Shot Detection</dt>
+            <dd>A reminder, not a control: detection is tuned on the watch (G-force threshold, double-barrel window, calibration), so those settings live in the watch app's Settings screen.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-media">
+          <div class="phoneframe"><img src="assets/phone-disciplines.png" alt="iPhone discipline list showing Trap, Trap Single Barrel, Skeet and Sporting" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>Disciplines</h3>
+          <p>The disciplines available on the watch. Four come built in — Trap (2 shots per single), Trap Single Barrel (1 shot), Skeet (three pairs per station), and Sporting (three singles and a pair per station) — and you can reshape or replace all of them.</p>
+          <dl class="doc-fields">
+            <dt>Discipline rows</dt>
+            <dd>Icon, name, and the same shorthand the watch shows: <span class="ui">25 clays · 5 st · 2 shots</span>, or <span class="ui">3S + 1P · 25 clays · 5 st</span> when the program includes pairs. The row order here is the order on the watch.</dd>
+            <dt>Edit / ＋</dt>
+            <dd>Tap a row to edit it, <span class="ui">＋</span> to create a new discipline, <span class="ui">Edit</span> to reorder or delete. Changes sync to the watch automatically, and at least one discipline must always remain. Deleting a discipline never touches rounds already scored with it.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="doc-row flip">
+        <div class="doc-media">
+          <div class="phoneframe"><img src="assets/phone-editor.png" alt="iPhone discipline editor for Sporting showing shots per single, station count and a station program of three singles and a pair" loading="lazy"></div>
+        </div>
+        <div class="doc-copy">
+          <h3>Discipline editor</h3>
+          <p>Build any discipline your ground throws — the watch scores it exactly as written here.</p>
+          <dl class="doc-fields">
+            <dt>Name</dt>
+            <dd>What appears on the watch and in History. Names must be unique.</dd>
+            <dt>Shots allowed per single target</dt>
+            <dd><span class="ui">1 shot</span>: every detected shot scores the next clay — no second barrels, ever. <span class="ui">2 shots</span>: a quick follow-up counts as the second barrel on the same clay. Pairs always take one shot per bird either way.</dd>
+            <dt>Stations</dt>
+            <dd>How many stands you shoot in a round, from 1 to 15.</dd>
+            <dt>Station Program</dt>
+            <dd>The target sequence every station repeats, built from <span class="ui">＋ Single</span> and <span class="ui">＋ Pair</span>. Drag to reorder, swipe to remove. The footer does the math for you — e.g. 3 singles + 1 pair = 5 clays per station × 5 stations = 25 targets.</dd>
+            <dt>Icon</dt>
+            <dd>The symbol shown for this discipline on both the watch and the phone.</dd>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <h2>More questions?</h2>
+    <p class="policy">DustedClays keeps everything on your own devices — how that works is spelled out in the <a href="index.html#privacy">privacy policy</a> on the home page. Found something this guide doesn't answer? The beta is the best place to tell us.</p>
+    <a class="btn btn-primary" href="index.html#beta">Join the TestFlight</a>
+    <div class="foot-meta">
+      <span>© 2026 Mark Sullivan</span>
+      <span><a href="index.html">DustedClays</a> — clay target scoring for Apple Watch &amp; iPhone</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
