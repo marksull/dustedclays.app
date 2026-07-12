@@ -58,6 +58,7 @@
     white-space: nowrap;
   }
   .btn-primary { background: var(--orange); color: #fff; }
+  .btn-ghost-dark { border: 1.5px solid rgba(251, 250, 247, 0.3); color: var(--bg); }
 
   /* Header */
   .site-header {
@@ -180,6 +181,7 @@
   .site-footer h2 { font-size: clamp(1.6rem, 3.4vw, 2.1rem); font-weight: 700; letter-spacing: -0.02em; }
   .site-footer p.policy { color: var(--dark-muted); max-width: 640px; margin: 16px auto 36px; font-size: 0.98rem; line-height: 1.7; }
   .site-footer p.policy a { text-decoration: underline; text-underline-offset: 3px; }
+  .site-footer .foot-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
   .site-footer .foot-meta {
     display: flex;
     flex-wrap: wrap;
@@ -502,8 +504,11 @@
 <footer class="site-footer">
   <div class="wrap">
     <h2>More questions?</h2>
-    <p class="policy">DustedClays keeps everything on your own devices — how that works is spelled out in the <a href="index.html#privacy">privacy policy</a> on the home page. Found something this guide doesn't answer? The beta is the best place to tell us.</p>
-    <a class="btn btn-primary" href="index.html#beta">Join the TestFlight</a>
+    <p class="policy">DustedClays keeps everything on your own devices — how that works is spelled out in the <a href="index.html#privacy">privacy policy</a> on the home page. Found something this guide doesn't answer? Drop us an email.</p>
+    <div class="foot-cta">
+      <a class="btn btn-primary" href="index.html#beta">Join the TestFlight</a>
+      <a class="btn btn-ghost-dark" href="mailto:dustedclays@sullivans.id.au">Contact us</a>
+    </div>
     <div class="foot-meta">
       <span>© 2026 Mark Sullivan</span>
       <span><a href="index.html">DustedClays</a> — clay target scoring for Apple Watch &amp; iPhone</span>
