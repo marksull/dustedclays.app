@@ -55,6 +55,7 @@
   }
   .btn-primary { background: var(--orange); color: #fff; }
   .btn-ghost { border: 1.5px solid var(--line); color: var(--ink); }
+  .btn-ghost-dark { border: 1.5px solid rgba(251, 250, 247, 0.3); color: var(--bg); }
 
   /* Header */
   .site-header {
@@ -186,6 +187,7 @@
   .site-footer { background: var(--dark); color: var(--bg); padding: 76px 0 40px; text-align: center; }
   .site-footer h2 { font-size: clamp(1.6rem, 3.4vw, 2.1rem); font-weight: 700; letter-spacing: -0.02em; }
   .site-footer p.policy { color: var(--dark-muted); max-width: 640px; margin: 16px auto 36px; font-size: 0.98rem; line-height: 1.7; }
+  .site-footer .foot-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
   .site-footer .foot-meta {
     display: flex;
     flex-wrap: wrap;
@@ -331,7 +333,10 @@
   <div class="wrap">
     <h2>DustedClays collects no data. Full stop.</h2>
     <p class="policy">All scores and settings are stored locally on your iPhone and Apple Watch and sync only between your own devices. The app has no accounts, no analytics, no advertising and no third-party SDKs, and it never transmits anything to us or anyone else. Motion-sensor data is processed on the watch in real time to detect shots and is never recorded or stored. This page is the app's privacy policy — if it ever changes, the change will be visible right here.</p>
-    <a class="btn btn-primary" href="#beta">Join the TestFlight</a>
+    <div class="foot-cta">
+      <a class="btn btn-primary" href="#beta">Join the TestFlight</a>
+      <a class="btn btn-ghost-dark" href="mailto:dustedclays@sullivans.id.au">Contact us</a>
+    </div>
     <div class="foot-meta">
       <span>© 2026 Mark Sullivan</span>
       <span><a href="help.html">Help &amp; user guide</a></span>
