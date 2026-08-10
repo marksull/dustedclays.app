@@ -152,7 +152,7 @@
   section h2 + p.lead { text-align: center; color: var(--muted); font-size: 1.1rem; max-width: 640px; margin: 12px auto 0; }
 
   /* How it works */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
+  .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 56px; max-width: 780px; margin-left: auto; margin-right: auto; }
   .step {
     background: #fff;
     border-radius: 20px;
@@ -261,7 +261,7 @@
       <a href="#privacy">Privacy</a>
     </nav>
     <div class="header-cta">
-      <a class="btn" href="#beta">Join the beta</a>
+      <a class="btn" href="#get">Get the app</a>
       <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
     </div>
   </header>
@@ -269,11 +269,11 @@
 
 <header class="hero" id="top">
   <div class="wrap">
-    <span class="pill">Now in TestFlight beta · Apple Watch + iPhone</span>
+    <span class="pill">For Apple Watch + iPhone</span>
     <h1>Every clay scored.<br>One tap for misses.</h1>
     <p class="sub">Your Apple Watch feels the recoil and scores the round for you, whether you shoot Trap, Skeet, Sporting or something you've built yourself.</p>
-    <div class="cta-row" id="beta">
-      <a class="btn btn-primary" href="#beta">Join the TestFlight</a>
+    <div class="cta-row" id="get">
+      <a class="btn btn-primary" href="#get">Get the app</a>
       <a class="btn btn-ghost" href="#how">How it works</a>
     </div>
   </div>
@@ -292,22 +292,27 @@
 
 <section id="how">
   <div class="wrap">
-    <h2>Three steps from gun case to scorecard</h2>
-    <p class="lead">Start the round, shoot, and tap only when you miss.</p>
+    <h2>Four steps from gun case to scorecard</h2>
+    <p class="lead">Pick, start, shoot, and tap only when you miss.</p>
     <div class="steps">
       <div class="step">
         <div class="shot watchframe"><img src="assets/watch-list.png" alt="Watch screen listing Trap, DTL and Trap Single Barrel disciplines" loading="lazy"></div>
         <h3>1 · Pick your discipline</h3>
-        <p>Open the watch app and choose Trap, Skeet, Sporting, or any discipline you've built yourself. Tap Start and the watch takes it from there.</p>
+        <p>Open the watch app and choose Trap, Skeet, Sporting, or any discipline you've built yourself.</p>
+      </div>
+      <div class="step">
+        <div class="shot watchframe"><img src="assets/watch-landing.png" alt="Watch start screen for Sporting with Disciplines, Station 1 and Start buttons" loading="lazy"></div>
+        <h3>2 · Start at your peg</h3>
+        <p>Pick the station your squad starts you on, then tap Start. Shot detection is on from that moment, so put your hands back on the gun.</p>
       </div>
       <div class="step">
         <div class="shot watchframe"><img src="assets/watch-round.png" alt="Watch screen mid-round showing 4 of 5 hits, Prev, Hit and Next buttons and first/second miss buttons for a pair" loading="lazy"></div>
-        <h3>2 · Just shoot</h3>
-        <p>The motion sensors pick up each shot from the recoil and score it as a hit. Missed one? A quick tap fixes it without looking down, and pairs get a separate button for each bird.</p>
+        <h3>3 · Just shoot</h3>
+        <p>The motion sensors pick up each shot from the recoil and score it as a hit. Missed one? A quick tap records the miss, and pairs get a separate button for each bird.</p>
       </div>
       <div class="step">
         <div class="shot phoneframe"><img src="assets/phone-history.png" alt="iPhone screen showing a history of scored rounds across disciplines" loading="lazy"></div>
-        <h3>3 · Review on iPhone</h3>
+        <h3>4 · Review on iPhone</h3>
         <p>Rounds sync to your iPhone on their own, right down to the second barrel on each clay. Watch your averages climb over the season.</p>
       </div>
     </div>
@@ -375,7 +380,7 @@
     <h2>DustedClays collects no data. Full stop.</h2>
     <p class="policy">All scores and settings are stored locally on your iPhone and Apple Watch and sync only between your own devices. The app has no accounts, no analytics, no advertising and no third-party SDKs, and it never transmits anything to us or anyone else. Motion-sensor data is processed on the watch in real time to detect shots and is never recorded or stored. This page is the app's privacy policy. If it ever changes, the change will be visible right here.</p>
     <div class="foot-cta">
-      <a class="btn btn-primary" href="#beta">Join the TestFlight</a>
+      <a class="btn btn-primary" href="#get">Get the app</a>
       <a class="btn btn-ghost-dark" href="mailto:dustedclays@sullivans.id.au">Contact us</a>
     </div>
     <div class="foot-meta">
